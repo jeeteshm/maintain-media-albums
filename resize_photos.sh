@@ -22,7 +22,7 @@ do
 		echo 'Dealing with' $dir '/' $file
 		
 		#for photos
-		ffmpeg -i $file -vf scale="'if(gt(a,4/3),1000,-1)':'if(gt(a,4/3),-1,750)'" -y $file
+		ffmpeg -i $file -vf scale="'if(gt(a,4/3),$OUTPUT_WIDTH,-1)':'if(gt(a,4/3),-1,$OUTPUT_HEIGHT)'" -y $file
 		
 		#for videos
 		#sleep 30s #if we don't sleep, system overheats and shuts down
