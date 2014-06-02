@@ -6,7 +6,7 @@
 # Prerequisites: ffmpeg package
 
 # Trivia: I wasn't able to process long videos: the system would shut
-# down due to overheating. Hance, I used process synchronization
+# down due to overheating. Hence, I used process synchronization
 # techniques to keep processor usage under control as follows: run the
 # video processing for UP_TIME many seconds then sleep for DOWN_TIME
 # many seconds; do this until we are over with all the videos
