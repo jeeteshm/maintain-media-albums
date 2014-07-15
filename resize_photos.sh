@@ -5,12 +5,25 @@
 # Objective: Scale down photos so that they occupy less space
 # Prerequisites: ffmpeg package
 
-ROOT_DIRECTORY=~/my-albums
-OUTPUT_WIDTH=1000 #will be used if aspect ratio > 1.33
-OUTPUT_HEIGHT=750 #will be used if aspect ratio <= 1.33
+ROOT_DIRECTORY=~/my-photos
+OUTPUT_SIZE=l # s: small, m: medium, l:large
+
+if [ $OUTPUT_SIZE -eq s ]
+then
+    OUTPUT_WIDTH=640 #will be used if aspect ratio > 1.33
+    OUTPUT_HEIGHT=480 #will be used if aspect ratio <= 1.33
+elif [ $OUTPUT_SIZE -eq m ]
+then
+    OUTPUT_WIDTH=800 #will be used if aspect ratio > 1.33
+    OUTPUT_HEIGHT=600 #will be used if aspect ratio <= 1.33
+else
+    OUTPUT_WIDTH=1000 #will be used if aspect ratio > 1.33
+    OUTPUT_HEIGHT=750 #will be used if aspect ratio <= 1.33
+fi
 
 cd $ROOT_DIRECTORY
-dirs=`ls | grep "20*"`
+#dirs=`ls | grep "20*"`
+dirs=./
 
 for dir in  $dirs #list of directories
 do
