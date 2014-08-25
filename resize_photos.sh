@@ -84,7 +84,7 @@ do
  else
   for file in $files
   do
-   echo 'Dealing with' $dir'/'$file
+   echo 'Dealing with' $DIRECTORY$dir'/'$file
    
    scale="'if(gt(a,4/3),$OUTPUT_WIDTH,-1)':'if(gt(a,4/3),-1,$OUTPUT_HEIGHT)'"
    if [ -z "$VERBOSE" ]
