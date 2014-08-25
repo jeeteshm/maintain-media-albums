@@ -72,6 +72,7 @@ do
 	echo 'Inside directory' $dir
 	cd $dir
 	files=""
+ IFS=$(echo -en "\n\b")
 	if [ -z "$IMAGE_FORMAT" ]
 	then
 	    files=`ls -1`
@@ -89,9 +90,9 @@ do
    scale="'if(gt(a,4/3),$OUTPUT_WIDTH,-1)':'if(gt(a,4/3),-1,$OUTPUT_HEIGHT)'"
    if [ -z "$VERBOSE" ]
    then
-       ffmpeg -i $file -vf scale=$scale -y $file 1>&2 2>/dev/null
+       ffmpeg -i "$file" -vf scale=$scale -y "$file" 1>&2 2>/dev/null
    else
-       ffmpeg -i $file -vf scale=$scale -y $file
+       ffmpeg -i "$file" -vf scale=$scale -y "$file"
    fi
 
   done
