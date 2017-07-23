@@ -32,17 +32,21 @@ def resizeImageFile(path, subdirs, file, args):
     #print("Resizing to Size: {1} Input: {0} Output: {2}".format(filePath, size, destinationFilePath));
 
     if args.imagesize == "small":
-        outputWidth=640 #will be used if aspect ratio > 1.33
-        outputHeight=480 #will be used if aspect ratio <= 1.33
+        outputWidth=640 #will be used if aspect ratio > 1
+        outputHeight=480 #will be used if aspect ratio <= 1
+        outputSize="50"
     elif args.imagesize == "medium":
-        outputWidth=800 #will be used if aspect ratio > 1.33
-        outputHeight=600 #will be used if aspect ratio <= 1.33
+        outputWidth=800 #will be used if aspect ratio > 1
+        outputHeight=600 #will be used if aspect ratio <= 1
+        outputSize="200"
     else:
-        outputWidth=1000 #will be used if aspect ratio > 1.33
-        outputHeight=750 #will be used if aspect ratio <= 1.33
+        outputWidth=1000 #will be used if aspect ratio > 1
+        outputHeight=750 #will be used if aspect ratio <= 1
+        outputSize="1000"
 
     #using exact path because there is another program called "convert" in Windows
-    command = ["C:\Program Files\ImageMagick-7.0.6-Q16\convert.exe", filePath, "-define", "jpeg:extent=50kb", "-resize", str(outputWidth) + "x" + str(outputHeight), destinationFilePath];
+    command = ["C:\Program Files\ImageMagick-7.0.6-Q16\convert.exe", filePath, "-define", "jpeg:extent=" + outputSize + "kb", "-resize", str(outputWidth) + "x" + str(outputHeight), destinationFilePath];
+
     print("Command: ", " ".join(command));
 
     if not os.path.exists(destinationDirectoryPath):
