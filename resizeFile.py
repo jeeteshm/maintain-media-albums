@@ -56,4 +56,30 @@ def resizeImageFile(path, subdirs, file, args):
     run(command);
 
 def resizeVideoFile(path, subdirs, file, args):
-    print("Dealing with the video file: ", path);
+    size = args.videosize;
+    verbose = args.verbose;
+    filePath = os.path.join(path, file);
+    relativeFilePath = os.path.relpath(filePath, args.inputdirectory);
+    relativeDirectoryPath = os.path.relpath(path, args.inputdirectory);
+    destinationFilePath = os.path.join(args.outputdirectory, relativeFilePath);
+    destinationDirectoryPath = os.path.join(args.outputdirectory, relativeDirectoryPath);
+    fps="24";
+    
+    print("Resizing to Size: {1} Input: {0} Output: {2}".format(filePath, size, destinationFilePath));
+
+    if args.imagesize == "small":
+        outputWidth=640
+    elif args.imagesize == "medium":
+        outputWidth=800
+    else:
+        outputWidth=1000
+
+    command = ["ffmpeg", "-i", filePath, "-vf", "scale=" + outputWidth + ":trunc(ow/a/2)*2, fps=" + fps, "-c:a", "copy", "-y", destinationFilePath];
+
+    print("Command: ", " ".join(command));
+
+    if not os.path.exists(destinationDirectoryPath):
+        print("Creating directory: " + destinationDirectoryPath);
+        os.makedirs(destinationDirectoryPath);
+        
+    #run(command);
