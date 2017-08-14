@@ -74,7 +74,7 @@ def resizeVideoFile(path, subdirs, file, args):
     else:
         outputWidth=1000
 
-    command = ["ffmpeg", "-i", filePath, "-vf", "scale=" + outputWidth + ":trunc(ow/a/2)*2, fps=" + fps, "-c:a", "copy", "-y", destinationFilePath];
+    command = ["ffmpeg", "-i", filePath, "-vf", "scale=" + str(outputWidth) + ":trunc(ow/a/2)*2, fps=" + fps, "-c:a", "copy", "-y", destinationFilePath];
 
     print("Command: ", " ".join(command));
 
@@ -82,4 +82,4 @@ def resizeVideoFile(path, subdirs, file, args):
         print("Creating directory: " + destinationDirectoryPath);
         os.makedirs(destinationDirectoryPath);
         
-    #run(command);
+    run(command);
