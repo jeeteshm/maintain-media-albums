@@ -45,7 +45,7 @@ def resizeImageFile(path, subdirs, file, args):
         outputSize="1000"
 
     #using exact path because there is another program called "convert" in Windows
-    command = ["C:\Program Files\ImageMagick-7.0.6-Q16\convert.exe", filePath, "-define", "jpeg:extent=" + outputSize + "kb", "-resize", str(outputWidth) + "x" + str(outputHeight), destinationFilePath];
+    command = ["C:\Program Files\ImageMagick-7.0.8-Q16\convert.exe", filePath, "-define", "jpeg:extent=" + outputSize + "kb", "-resize", str(outputWidth) + "x" + str(outputHeight), destinationFilePath];
 
     print("Command: ", " ".join(command));
 

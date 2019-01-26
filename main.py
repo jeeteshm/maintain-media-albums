@@ -15,7 +15,6 @@ def main():
     parser.add_argument("-vs", "--videosize", type=str, help="Output video size; one of 'small', 'medium', or 'large'", required=False, default="small");
     parser.add_argument("-v", "--verbose", help="Whether to output verbose output messages", required=False, default=False);
     args = parser.parse_args();
-
     print("Input directory: ", args.inputdirectory);
     print("Output directory: ", args.outputdirectory);
     print("Output image size: ", args.imagesize);
