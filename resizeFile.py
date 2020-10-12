@@ -10,7 +10,7 @@ __author__ = "Jeetesh Mangwani"
 def resizeFile(path, subdirs, file, args):
     name, extension = os.path.splitext(file);
     image_file_extensions = [".png", ".jpg", ".jpeg", ".PNG", ".JPG", ".JPEG"];
-    video_file_extensions = [".avi", ".mp4", ".AVI", ".MP4"];
+    video_file_extensions = [".avi", ".mp4", ".AVI", ".MP4", ".mov", ".MOV"];
 
     if(extension in image_file_extensions):
         resizeImageFile(path, subdirs, file, args);
